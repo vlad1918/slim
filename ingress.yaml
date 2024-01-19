@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+#transportation-prod.cf-transporta-live-79.cf.metro.cloud
+#transportation-prod-vlad-test-svc.apps-api-mcdr-002-live5-mcc-be-gcw1.metroscales.io
+metadata:
+  name: vlad-test-ingress
+spec:
+  rules:
+    - host: transportation-prod.cf-transporta-live-79.cf.metro.cloud
+      http:
+        paths:
+          - backend:
+              service:
+                name: vlad-test-service
+                port:
+                  number: 80
+            path: /transportation.vladtest.v1(/|$)(.*)
+            pathType: Prefix

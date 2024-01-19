@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vlad-test
+  labels:
+    app.kubernetes.io/name: vlad-test
+spec:
+  selector:
+    matchLabels:
+      app: vlad-test
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: vlad-test
+    spec:
+      containers:
+        - name: run
+          image: registry.metroscales.io/transportation/vlad-test:v4
+          ports:
+           - containerPort: 8084
